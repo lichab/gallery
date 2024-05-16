@@ -2,8 +2,8 @@
 
 ## ToDo
  
- - [ ] Walking skeleton
- - [ ] Setup UI with mock data
+ - [x] Walking skeleton
+ - [x] Setup UI with mock data
  - [ ] Setup DB
  - [ ] Attach DB to UI
  - [ ] Add Auth
