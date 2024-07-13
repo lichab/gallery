@@ -19,16 +19,16 @@ import {
 export const createTable = pgTableCreator((name) => `gallery_${name}`);
 
 export const posts = createTable(
-  "post",
+  "image",
   {
     id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }),
+    url: varchar("url", { length: 256 }),
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
     updatedAt: timestamp("updatedAt", { withTimezone: true }),
   },
   (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
+    nameIndex: index("name_idx").on(example.url),
+  }),
 );

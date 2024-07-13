@@ -10,12 +10,12 @@ const images = mockImageUrls.map((url, index) => ({
   url,
 }));
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <main>
       <div className="flex flex-wrap items-center gap-4">
-        {[...images, ...images, ...images, ...images].map((image) => (
-          <div key={image.id} className="p4 w-48">
+        {[...images, ...images, ...images, ...images].map((image, index) => (
+          <div key={image.id + "-" + index} className="p4 w-48">
             <img src={image.url} alt="image" />
           </div>
         ))}
