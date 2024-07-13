@@ -8,12 +8,14 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-function TopNav() {
+async function TopNav() {
   return (
     <nav className="flex w-full items-center justify-between border-b p-4 text-xl font-semibold">
       <h2>My Gallery</h2>
 
-      <p>Sing In</p>
+      <p>
+        Sing In <a href="/login/github">Sign in with GitHub</a>
+      </p>
     </nav>
   );
 }

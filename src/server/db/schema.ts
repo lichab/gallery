@@ -7,6 +7,7 @@ import {
   pgTableCreator,
   serial,
   timestamp,
+  uuid,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -33,3 +34,20 @@ export const images = createTable(
     nameIndex: index("name_idx").on(example.name),
   }),
 );
+
+export const userTable = createTable("user", {
+  id: uuid("id").primaryKey(),
+  githubId: varchar("github_id").unique(),
+  username: varchar("username", { length: 256 }),
+});
+
+export const sessionTable = createTable("session", {
+  id: varchar("id", { length: 256 }).primaryKey(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => userTable.id),
+  expiresAt: timestamp("expires_at", {
+    withTimezone: true,
+    mode: "date",
+  }).notNull(),
+});
