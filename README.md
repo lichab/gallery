@@ -5,8 +5,8 @@
 - [x] Walking skeleton
 - [x] Setup UI with mock data
 - [x] Tidy up build
-- [ ] Setup DB
-- [ ] Attach DB to UI
+- [x] Setup DB
+- [x] Attach DB to UI
 - [ ] Add Auth
 - [ ] Add Img upload
 - [ ] Error management (Sentry)
