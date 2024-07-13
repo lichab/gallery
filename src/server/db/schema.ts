@@ -18,7 +18,7 @@ import {
  */
 export const createTable = pgTableCreator((name) => `gallery_${name}`);
 
-export const posts = createTable(
+export const images = createTable(
   "image",
   {
     id: serial("id").primaryKey(),
