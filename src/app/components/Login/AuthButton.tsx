@@ -2,7 +2,7 @@
 
 import { type User } from "lucia";
 import { useTransition } from "react";
-import type { ActionResult } from "~/app/layout";
+import type { ActionResult } from "~/lib/auth";
 
 export default function AuthButton({
   user,

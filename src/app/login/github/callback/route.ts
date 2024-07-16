@@ -1,4 +1,4 @@
-import { github, lucia } from "~/auth";
+import { github, lucia } from "~/lib/auth";
 import { db } from "~/server/db";
 import { cookies } from "next/headers";
 import { OAuth2RequestError } from "arctic";
