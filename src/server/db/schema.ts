@@ -25,6 +25,9 @@ export const images = createTable(
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }).notNull(),
     url: varchar("url", { length: 256 }).notNull(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => userTable.id),
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
