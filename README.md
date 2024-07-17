@@ -7,7 +7,7 @@
 - [x] Tidy up build
 - [x] Setup DB
 - [x] Attach DB to UI
-- [ ] Add Auth
+- [x] Add Auth
 - [ ] Add Img upload
 - [ ] Error management (Sentry)
 - [ ] Routing

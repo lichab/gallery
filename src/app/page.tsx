@@ -9,7 +9,7 @@ export default async function HomePage() {
 
   return (
     <main>
-      <div className="flex flex-wrap items-center gap-4 px-4">
+      <div className="flex flex-wrap items-center justify-center gap-4 px-4">
         {[...images, ...images, ...images, ...images].map((image, index) => (
           <div key={image.id + "-" + index} className="p4 w-48">
             <img src={image.url} alt="image" />

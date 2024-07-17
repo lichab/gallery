@@ -2,37 +2,29 @@
 
 import { type User } from "lucia";
 import { useTransition } from "react";
-import type { ActionResult } from "~/lib/auth";
+import { logout, login } from "~/server/actions";
 
-export default function AuthButton({
-  user,
-  action,
-}: {
-  user: User | null;
-  action: () => Promise<ActionResult>;
-}) {
+export default function AuthButton({ user }: { user: User | null }) {
   const [isPending, startTransition] = useTransition();
 
   const handleSubmit = () => {
     startTransition(async () => {
-      await action();
+      if (user) {
+        await logout();
+        return;
+      }
+
+      await login();
     });
   };
 
   if (isPending) {
     return <div>Loading....</div>;
   }
-  if (user) {
-    return (
-      <form action={handleSubmit}>
-        <button>Logout</button>
-      </form>
-    );
-  }
 
   return (
     <form action={handleSubmit}>
-      <button>Log in</button>
+      <button>{user ? "Logout" : "Login"}</button>
     </form>
   );
 }
