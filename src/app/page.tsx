@@ -1,11 +1,21 @@
+import { validateRequest } from "~/server/actions";
 import { db } from "~/server/db";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
+  const { user } = await validateRequest();
   const images = await db.query.images.findMany({
     orderBy: (model, { desc }) => desc(model.id),
   });
+
+  if (!user) {
+    return (
+      <div className="flex h-full items-center justify-center text-2xl">
+        Please Sign in
+      </div>
+    );
+  }
 
   return (
     <main>
