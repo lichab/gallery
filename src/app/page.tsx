@@ -1,15 +1,11 @@
-import { eq } from "drizzle-orm";
+import Image from "next/image";
 import { validateRequest } from "~/server/actions";
-import { db } from "~/server/db";
-import { images } from "~/server/db/schema";
+import { getImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const { user } = await validateRequest();
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.id),
-  });
 
   if (!user) {
     return (
@@ -19,12 +15,21 @@ export default async function HomePage() {
     );
   }
 
+  const images = await getImages(user?.id);
+
   return (
     <main>
       <div className="flex flex-wrap items-center justify-center gap-4 px-4">
         {images.map((image) => (
           <div key={image.id} className="p4 w-48">
-            <img src={image.url} alt="image" />
+            <Image
+              src={image.url}
+              alt={image.name}
+              style={{ objectFit: "contain" }}
+              width={192}
+              height={192}
+            />
+            <p>{image.name}</p>
           </div>
         ))}
       </div>
